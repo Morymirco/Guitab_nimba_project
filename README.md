@@ -41,6 +41,8 @@ GUITAB est une application web cartographique permettant de gérer et visualiser
 ![Recherche](screenshots/search.png)
 - Filtrage par type et quartier
 - Résultats en temps réel
+![Filtre par type](screenshots/filtrepartype.png)
+![Filtre par quartier](screenshots/filtreparquartiert.png)
 
 ## 🛠️ Technologies Utilisées
 
