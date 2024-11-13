@@ -117,12 +117,12 @@ Pour plus de détails sur l'utilisation de chaque fonctionnalité, veuillez cons
 
 ## 👥 Contribution
 
-- <img src="mory.jpg" width="50"/> **Mory Mirco** - *Chef de projet*
+- <img src="img/mory.jpg" width="50"/> **Mory Mirco** - *Chef de projet*
   - Architecture du projet
   - Développement des fonctionnalités principales
   - Documentation technique
 
-- <img src="ramandan.jpg" width="50"/> **Mamadou Ramandan Barry** - *Développeur font-end*
+- <img src="img/ramandan.jpg" width="50"/> **Mamadou Ramandan Barry** - *Développeur font-end*
   - Intégration de la carte
   - Gestion des marqueurs
   - Tests et débogage
