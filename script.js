@@ -1,6 +1,7 @@
 'use strict';
 
 class Etablissement {
+  
   id = Date.now() + Math.floor(Math.random() * 100);
   date = new Date();
 
@@ -53,17 +54,29 @@ class Ecole extends Etablissement {
 }
 
 class App {
+  // Stocke la référence à la carte Leaflet
   #map;
+  
+  // Stocke l'événement de clic sur la carte
   #mapEvent;
+  
+  // Niveau de zoom initial de la carte
   #mapZoomLevel = 13;
+  
+  // Tableau stockant tous les établissements créés
   #etablissements = [];
+  
+  // Objet stockant les marqueurs Leaflet associés aux établissements
   #markers = {};
+  
+  // Palette de couleurs utilisée pour différencier les établissements sur la carte
   #colors = [
     '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', 
     '#FFEEAD', '#D4A5A5', '#9B59B6', '#3498DB',
     '#E67E22', '#27AE60', '#F1C40F', '#E74C3C'
   ];
 
+  // Icônes personnalisées pour chaque type d'établissement sur la carte
   #icons = {
     universite: L.divIcon({
       html: '<i class="fas fa-graduation-cap" style="color: #3498db;"></i>',
@@ -95,6 +108,7 @@ class App {
     })
   };
 
+  // Différents styles de carte disponibles (satellite, rues, etc.)
   #mapStyles = {
     streets: 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
     satellite: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
@@ -102,7 +116,11 @@ class App {
     dark: 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'
   };
 
+  // Stocke la couche de tuiles actuellement affichée sur la carte
+  
+  // Stocke la couche de tuiles actuellement affichée sur la carte
   #currentTileLayer = null;
+ 
 
   constructor() {
     // Récupérer les éléments du DOM
