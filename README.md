@@ -117,17 +117,48 @@ Pour plus de détails sur l'utilisation de chaque fonctionnalité, veuillez cons
 
 ## 👥 Contribution
 
-- <img src="img/mory.jpg" width="50"/> **Mory Mirco** - *Chef de projet*
-  - Architecture du projet
-  - Développement des fonctionnalités principales
-  - Documentation technique
+Les contributions sont les bienvenues ! Pour contribuer :
 
-- <img src="img/ramandan.jpg" width="50"/> **Mamadou Ramandan Barry** - *Développeur font-end*
-  - Intégration de la carte
-  - Gestion des marqueurs
-  - Tests et débogage
+1. Forkez le projet
+2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
+3. Committez vos changements (`git commit -m 'Add some AmazingFeature'`)
+4. Pushez vers la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrez une Pull Request
 
-- <img src="conte.jpg" width="50"/> **Djenabou conte** - *Designer*
-  - Design de l'interface
-  - Expérience utilisateur
-  - Intégration CSS
+### Contributeurs
+
+<div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
+  <img src="img/mory.jpg" width="50" height="50" style="border-radius: 50%; object-fit: cover;"/> 
+  <div>
+    <strong>Mory Mirco</strong> - Chef de projet
+    <ul>
+      <li>Architecture du projet</li>
+      <li>Développement des fonctionnalités principales</li>
+      <li>Documentation technique</li>
+    </ul>
+  </div>
+</div>
+
+<div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
+  <img src="img/ramandan.jpg" width="50" height="50" style="border-radius: 50%; object-fit: cover;"/>
+  <div>
+    <strong>Mamadou Ramandan Barry</strong> - Développeur front-end
+    <ul>
+      <li>Intégration de la carte</li>
+      <li>Gestion des marqueurs</li>
+      <li>Tests et débogage</li>
+    </ul>
+  </div>
+</div>
+
+<div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
+  <img src="img/conte.jpg" width="50" height="50" style="border-radius: 50%; object-fit: cover;"/>
+  <div>
+    <strong>Djenabou Conte</strong> - Designer
+    <ul>
+      <li>Design de l'interface</li>
+      <li>Expérience utilisateur</li>
+      <li>Intégration CSS</li>
+    </ul>
+  </div>
+</div>

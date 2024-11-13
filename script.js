@@ -182,24 +182,6 @@ class App {
     // Ajouter l'écouteur pour le changement de style de carte
     document.getElementById('map-style').addEventListener('change', this._changeMapStyle.bind(this));
 
-    // Fonction pour gérer l'affichage des champs spécifiques
-    function toggleSpecificFields() {
-        // Cacher d'abord tous les champs spécifiques
-        const allSpecificFields = document.querySelectorAll('.form__group--universite, .form__group--ecole, .form__group--hopital, .form__group--bibliotheque');
-        allSpecificFields.forEach(field => field.classList.add('hidden'));
-        
-        // Récupérer le type sélectionné
-        const selectedType = document.querySelector('.form__input--type').value;
-        
-        // Afficher les champs correspondants au type sélectionné
-        const specificFields = document.querySelector(`.form__group--${selectedType}`);
-        if (specificFields) {
-            specificFields.classList.remove('hidden');
-        }
-    }
-
-    // Ajouter l'écouteur d'événement sur le select de type
-    document.querySelector('.form__input--type').addEventListener('change', toggleSpecificFields);
 
     // Appeler la fonction au chargement pour initialiser l'affichage
     document.addEventListener('DOMContentLoaded', () => {
@@ -615,6 +597,9 @@ class App {
 
         // Créer le fichier JSON
         const data = JSON.stringify(this.#etablissements, null, 2);
+        // Créer un objet contenant les données à exporter
+        // Convertir les données en chaîne JSON formatée avec indentation
+        // Créer un blob avec les données pour le téléchargement
         const blob = new Blob([data], { type: 'application/json' });
         const url = window.URL.createObjectURL(blob);
         
@@ -643,6 +628,8 @@ class App {
     const file = e.target.files[0];
     if (!file) return;
 
+    // Créer un lecteur de fichier pour lire le contenu du fichier
+    // utiliser FileReader pour lire le contenu du fichier
     const reader = new FileReader();
     
     reader.onload = (event) => {
@@ -962,7 +949,8 @@ class App {
             })
           }).addTo(this.#map);
           
-          // Créer un popup personnalisé
+          // Créer un popup 
+          
           const popupContent = `
             <div class="user-popup">
               <div class="user-popup-header">
@@ -1034,10 +1022,14 @@ class App {
     });
   }
 
+
   _getRandomColor() {
     return this.#colors[Math.floor(Math.random() * this.#colors.length)];
   }
 
+  // Obtient les initiales d'un nom en prenant la première lettre de chaque mot
+  // et en les combinant (maximum 2 lettres)
+  // Exemple: "John Doe" -> "JD"
   _getInitials(name) {
     return name
       .split(' ')
