@@ -86,9 +86,9 @@ GUITAB est une application web cartographique permettant de gérer et visualiser
 
 
 - Leaflet.js pour la cartographie
-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/leaflet/leaflet-plain-wordmark.svg" width="20"/> Leaflet.js pour la cartographie
-- LocalStorage pour la persistance
-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/localstorage/localstorage-original.svg" width="20"/> LocalStorage pour la persistance
+- <img src="https://leafletjs.com/docs/images/logo.png" width="20"/> Leaflet.js pour la cartographie
+- <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html5-storage.png" width="20"/> LocalStorage pour la persistance
+
 
 ## 📥 Installation
 1. Télécharger ou cloner le projet :
