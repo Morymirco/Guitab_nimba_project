@@ -109,6 +109,11 @@ class App {
   };
 
   // Différents styles de carte disponibles (satellite, rues, etc.)
+  // Liens des styles de carte provenant de différents fournisseurs de tuiles cartographiques :
+  // - OpenStreetMap HOT (Humanitarian) pour le style "streets"
+  // - ESRI World Imagery pour le style "satellite" 
+  // - OpenTopoMap pour le style "terrain"
+  // - Stadia Maps pour le style "dark"
   #mapStyles = {
     streets: 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
     satellite: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
@@ -140,6 +145,27 @@ class App {
     // bind(this) permet de lier la fonction à l'instance de la classe 
     // this._newEtablissement est une méthode de la classe App
   
+    // La méthode bind() est utilisée ici pour plusieurs raisons:
+    
+    // 1. Préserver le contexte 'this'
+    // Sans bind(), dans les callbacks d'événements, 'this' ferait référence à l'élément DOM qui a déclenché l'événement
+    // Avec bind(this), on s'assure que 'this' fait référence à l'instance de la classe App
+    
+    // 2. Accéder aux propriétés/méthodes de la classe
+    // bind() permet d'accéder aux propriétés comme #map, #etablissements et aux méthodes comme _showNotification() 
+    // depuis les gestionnaires d'événements
+    
+    // 3. Maintenir l'encapsulation
+    // En utilisant bind(), les méthodes privées restent accessibles uniquement dans la classe
+    // tout en étant utilisables comme callbacks
+    
+    // Exemple sans bind():
+    // this -> élément form
+    // this.#map -> undefined 
+    
+    // Exemple avec bind(this):
+    // this -> instance de App
+    // this.#map -> la carte
     this.form.addEventListener('submit', this._newEtablissement.bind(this));
 
     // Ajouter les event listeners pour import/export
@@ -1121,35 +1147,40 @@ class App {
   }
 
   _clearAllEtablissements() {
+    // Vérifier s'il y a des établissements à supprimer
     if (this.#etablissements.length === 0) {
         this._showNotification('Aucun établissement à supprimer', 'info');
         return;
     }
 
-    // Créer un popup de confirmation personnalisé
+    // Créer une notification de confirmation
     const confirmDialog = document.createElement('div');
     confirmDialog.className = 'notification notification--warning';
     confirmDialog.innerHTML = `
-      <div class="notification__content">
-        <span class="notification__icon"><i class="fas fa-exclamation-triangle" style="color: #f1c40f;"></i></span>
-        <p class="notification__message">Voulez-vous vraiment supprimer tous les établissements ?</p>
-        <p class="notification__submessage" style="font-size: 0.9em; color: #666;">Cette action est irréversible.</p>
-      </div>
-      <div class="notification__actions">
-        <button class="notification__btn notification__btn--confirm"><i class="fas fa-trash-alt" style="color: #e74c3c;"></i> Tout supprimer</button>
-        <button class="notification__btn notification__btn--cancel"><i class="fas fa-times" style="color: #666;"></i> Annuler</button>
-      </div>
+        <div class="notification__content">
+            <span class="notification__icon"><i class="fas fa-exclamation-triangle" style="color: #f1c40f;"></i></span>
+            <p class="notification__message">Voulez-vous vraiment supprimer tous les établissements ?</p>
+            <p class="notification__submessage">Cette action est irréversible.</p>
+        </div>
+        <div class="notification__actions">
+            <button class="notification__btn notification__btn--confirm">
+                <i class="fas fa-trash-alt"></i> Tout supprimer
+            </button>
+            <button class="notification__btn notification__btn--cancel">
+                <i class="fas fa-times"></i> Annuler
+            </button>
+        </div>
     `;
 
     this.notifContainer.appendChild(confirmDialog);
     setTimeout(() => confirmDialog.classList.add('show'), 10);
 
-    // Gérer les actions de confirmation
+    // Gérer la confirmation
     const confirmBtn = confirmDialog.querySelector('.notification__btn--confirm');
     const cancelBtn = confirmDialog.querySelector('.notification__btn--cancel');
 
     confirmBtn.addEventListener('click', () => {
-        // Supprimer tous les markers de la carte
+        // Supprimer tous les marqueurs de la carte
         Object.values(this.#markers).forEach(marker => {
             this.#map.removeLayer(marker);
         });
@@ -1158,7 +1189,7 @@ class App {
         this.#etablissements = [];
         this.#markers = {};
 
-        // Vider la liste
+        // Vider la liste dans le DOM
         this.locationsList.innerHTML = '';
 
         // Sauvegarder dans le localStorage
