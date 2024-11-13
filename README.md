@@ -117,17 +117,17 @@ Pour plus de détails sur l'utilisation de chaque fonctionnalité, veuillez cons
 
 ## 👥 Contribution
 
-- <img src="https://avatars.githubusercontent.com/morymirco" width="50"/> **Mory Mirco** - *Chef de projet*
+- <img src="mory.jpg" width="50"/> **Mory Mirco** - *Chef de projet*
   - Architecture du projet
   - Développement des fonctionnalités principales
   - Documentation technique
 
-- <img src="https://avatars.githubusercontent.com/mariamacire" width="50"/> **Mamadou Ramandan Barry** - *Développeur font-end*
+- <img src="ramandan.jpg" width="50"/> **Mamadou Ramandan Barry** - *Développeur font-end*
   - Intégration de la carte
   - Gestion des marqueurs
   - Tests et débogage
 
-- <img src="https://avatars.githubusercontent.com/ibrahimadiallo" width="50"/> **Djenabou conte** - *Designer*
+- <img src="conte.jpg" width="50"/> **Djenabou conte** - *Designer*
   - Design de l'interface
   - Expérience utilisateur
   - Intégration CSS
